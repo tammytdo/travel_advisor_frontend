@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+
+import "./App.css"
+import React, { useState } from 'react';
+import { Form, Button, Container } from 'react-bootstrap';
 
 function App() {
-  return (
+  const [userFormData, setUserFormData] = useState({
+      city: '',
+      month: ''
+    })
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+    setUserFormData({
+      ...userFormData,
+      [name]: value
+    })
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    }
+
+      return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Group controlId="user-city">
+            <Form.Label>Enter a City: </Form.Label>
+            <Form.Control
+              type='text'
+              name='city'
+              placeholder='city'
+              value={userFormData.city}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+        </Form>
+      </Container>
     </div>
-  );
+  )
 }
 
 export default App;
