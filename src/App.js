@@ -39,7 +39,7 @@ function App() {
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Search</Button>
         </Form>
       </Container>
     </div>
